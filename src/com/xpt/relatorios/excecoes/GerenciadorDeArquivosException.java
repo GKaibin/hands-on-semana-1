@@ -1,4 +1,4 @@
-package com.xpt.relatorios.src.main.excecoes;
+package com.xpt.relatorios.excecoes;
 
 public class GerenciadorDeArquivosException extends Exception {
 

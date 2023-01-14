@@ -1,15 +1,15 @@
-package com.xpt.relatorios.src.main.modelos;
+package com.xpt.relatorios.modelos;
+
+import com.xpt.relatorios.utilidades.ConversorTipos;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class Nota {
 
     public static final String CABECALHO = "empresa;mes;ano;valor;dataEmissao;nota";
-
-    private static final DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     String empresa;
 
@@ -63,8 +63,8 @@ public class Nota {
         this.valor = valor;
     }
 
-    public void setValor(final String valor) {
-        this.valor = BigDecimal.valueOf(Double.parseDouble(valor));
+    public void setValor(final String valor) throws ParseException {
+        this.valor = ConversorTipos.converterParaBigDecimal(valor);
     }
 
     public LocalDate getDataEmissao() {
@@ -76,7 +76,7 @@ public class Nota {
     }
 
     public void setDataEmissao(final String dataEmissao) {
-        this.dataEmissao = LocalDate.parse(dataEmissao, dataFormato);
+        this.dataEmissao = LocalDate.parse(dataEmissao, ConversorTipos.DATA_FORMATO);
     }
 
     public int getNota() {
@@ -94,6 +94,6 @@ public class Nota {
     @Override
     public String toString() {
 
-        return String.format("%s;%s;%s;%s;%s;%s", empresa, mes, ano, new DecimalFormat("#0.##").format(valor), dataEmissao.format(dataFormato), nota);
+        return String.format("%s;%s;%s;%s;%s;%s", empresa, mes, ano, new DecimalFormat("#0.##").format(valor), dataEmissao.format(ConversorTipos.DATA_FORMATO), nota);
     }
 }

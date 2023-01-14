@@ -1,7 +1,7 @@
-package com.xpt.relatorios.src.main;
+package com.xpt.relatorios;
 
-import com.xpt.relatorios.src.main.excecoes.GerenciadorDeArquivosException;
-import com.xpt.relatorios.src.main.inicio.InicioRelatorios;
+import com.xpt.relatorios.inicio.InicioRelatorios;
+import com.xpt.relatorios.excecoes.GerenciadorDeArquivosException;
 
 import java.util.logging.Logger;
 
